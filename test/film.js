@@ -35,7 +35,7 @@ describe('Film', () => {
             chai.request(server)
                 .get('/api/film')
                 .set({
-                    Authorization: 'token here'
+                    Authorization: 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicmVhZGVyIiwiX2lkIjoiNWM0NzAzZDlhM2NmYzExMWE4NjE3NjlhIiwiZW1haWwiOiJlbWFpbEBlbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQwNSRiMzI2Q2I3Mm5rM0NYdHdicFR1OFRlMWlmOTdrQy95MXBaNktvcHZLbFU2YWtqWms0djNFbSIsImNyZWF0ZWRBdCI6IjIwMTktMDEtMjJUMTE6NTE6NTMuNjc5WiIsInVwZGF0ZWRBdCI6IjIwMTktMDEtMjJUMTE6NTE6NTMuNjc5WiIsIl9fdiI6MCwiaWF0IjoxNTQ4MTU3OTE5fQ.UZhEp9VRXF35jwicXEamoxoTP3FYIbARuTuds13vHiI'
                 })
                 .end((err, res) => {
                     res.should.have.status(200);
@@ -52,7 +52,7 @@ describe('Film', () => {
                 .post('/api/film')
                 .send(testFilm)
                 .set({
-                    Authorization: 'token here'
+                    Authorization: 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicmVhZGVyIiwiX2lkIjoiNWM0NzAzZDlhM2NmYzExMWE4NjE3NjlhIiwiZW1haWwiOiJlbWFpbEBlbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQwNSRiMzI2Q2I3Mm5rM0NYdHdicFR1OFRlMWlmOTdrQy95MXBaNktvcHZLbFU2YWtqWms0djNFbSIsImNyZWF0ZWRBdCI6IjIwMTktMDEtMjJUMTE6NTE6NTMuNjc5WiIsInVwZGF0ZWRBdCI6IjIwMTktMDEtMjJUMTE6NTE6NTMuNjc5WiIsIl9fdiI6MCwiaWF0IjoxNTQ4MTU3OTE5fQ.UZhEp9VRXF35jwicXEamoxoTP3FYIbARuTuds13vHiI'
                 })
                 .end((err, res) => {
                     res.should.have.status(200);
@@ -61,7 +61,7 @@ describe('Film', () => {
                     chai.request(server)
                         .get('/api/film')
                         .set({
-                            Authorization: 'token here'
+                            Authorization: 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoicmVhZGVyIiwiX2lkIjoiNWM0NzAzZDlhM2NmYzExMWE4NjE3NjlhIiwiZW1haWwiOiJlbWFpbEBlbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQwNSRiMzI2Q2I3Mm5rM0NYdHdicFR1OFRlMWlmOTdrQy95MXBaNktvcHZLbFU2YWtqWms0djNFbSIsImNyZWF0ZWRBdCI6IjIwMTktMDEtMjJUMTE6NTE6NTMuNjc5WiIsInVwZGF0ZWRBdCI6IjIwMTktMDEtMjJUMTE6NTE6NTMuNjc5WiIsIl9fdiI6MCwiaWF0IjoxNTQ4MTU3OTE5fQ.UZhEp9VRXF35jwicXEamoxoTP3FYIbARuTuds13vHiI'
                         })
                         .end((err, res) => {
                             ID = res.body[0]._id;
