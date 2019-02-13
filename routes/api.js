@@ -114,9 +114,7 @@ router.get('/film', passport.authenticate('jwt', {session: false}), function(req
 router.get('/film:id', passport.authenticate('jwt', {session: false}), function(req, res, next) {
     var token = getToken(req.headers);
     if (token) {
-        console.log('the id is: ');
-        console.log(req.params.id);
-        Film.findById(new mongoose.Types.ObjectId(req.params.id), function (err, post) {
+        Film.findById(req.params.id, function (err, post) {
             if (err) return next (err);
             res.json(post);
 
@@ -130,7 +128,7 @@ router.get('/film:id', passport.authenticate('jwt', {session: false}), function(
 router.get('/film:id', passport.authenticate('jwt', {session: false}), function(req, res, next) {
     var token = getToken(req.headers);
     if (token) {
-        Film.findOneAndUpdate({'_id':req.params.id}, req.body, function (err, post) {
+        Film.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
             if (err) return next(err);
             res.json(post);
 
@@ -145,7 +143,7 @@ router.get('/film:id', passport.authenticate('jwt', {session: false}), function(
 router.delete('/film:id', passport.authenticate('jwt', {session: false}), function(req, res, next) {
     var token = getToken(req.headers);
     if (token) {
-        Film.findOneAndRemove({'_id':req.params.id}, req.body, function (err, post) {
+        Film.findByIdAndRemove(req.params.id, req.body, function (err, post) {
             if (err) return next(err);
             res.json(post);
 
