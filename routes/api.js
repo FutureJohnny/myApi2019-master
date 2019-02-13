@@ -106,7 +106,7 @@ router.get('/film', passport.authenticate('jwt', {session: false}), function(req
             res.json(films);
         });
     } else {
-        return res.status(403).send({success: false, msg: 'unathorized.'});
+        return res.status(403).send({success: false, msg: 'unauthorized.'});
     }
 });
 
@@ -114,7 +114,9 @@ router.get('/film', passport.authenticate('jwt', {session: false}), function(req
 router.get('/film:id', passport.authenticate('jwt', {session: false}), function(req, res, next) {
     var token = getToken(req.headers);
     if (token) {
-        Film.findById(req.params.id, function (err, post) {
+        console.log('the id is: ');
+        console.log(req.params.id);
+        Film.findById(new mongoose.Types.ObjectId(req.params.id), function (err, post) {
             if (err) return next (err);
             res.json(post);
 
@@ -128,7 +130,7 @@ router.get('/film:id', passport.authenticate('jwt', {session: false}), function(
 router.get('/film:id', passport.authenticate('jwt', {session: false}), function(req, res, next) {
     var token = getToken(req.headers);
     if (token) {
-        Film.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+        Film.findOneAndUpdate({'_id':req.params.id}, req.body, function (err, post) {
             if (err) return next(err);
             res.json(post);
 
@@ -143,7 +145,7 @@ router.get('/film:id', passport.authenticate('jwt', {session: false}), function(
 router.delete('/film:id', passport.authenticate('jwt', {session: false}), function(req, res, next) {
     var token = getToken(req.headers);
     if (token) {
-        Film.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+        Film.findOneAndRemove({'_id':req.params.id}, req.body, function (err, post) {
             if (err) return next(err);
             res.json(post);
 
